@@ -1,5 +1,5 @@
 const workPlace = document.querySelector('.work-place');
-const canvas = document.getElementById('canvas');
+export const canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
 
 export function init() {
     const width = parseInt(getComputedStyle(workPlace).width);
