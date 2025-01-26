@@ -1,0 +1,49 @@
+Date : 2025-01-26 12:42:55
+Directory : d:\projects\draughtsmanship
+Total : 18 files,  4827 codes, 4 comments, 117 blanks, all 4948 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          2 |      4,448 |          0 |          2 |      4,450 |
+| TypeScript         |         12 |        268 |          4 |        105 |        377 |
+| CSS                |          1 |         46 |          0 |          9 |         55 |
+| JavaScript         |          1 |         35 |          0 |          1 |         36 |
+| HTML               |          1 |         20 |          0 |          0 |         20 |
+| JSON with Comments |          1 |         10 |          0 |          0 |         10 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                 | files      | code       | comment    | blank      | total      |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                    |         18 |      4,827 |          4 |        117 |      4,948 |
+| . (Files)                                            |          4 |      4,493 |          0 |          3 |      4,496 |
+| src                                                  |         14 |        334 |          4 |        114 |        452 |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                             | language           | code       | comment    | blank      | total      |
++------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\projects\draughtsmanship\package-lock.json        | JSON               |      4,422 |          0 |          1 |      4,423 |
+| d:\projects\draughtsmanship\package.json             | JSON               |         26 |          0 |          1 |         27 |
+| d:\projects\draughtsmanship\src\addText.ts           | TypeScript         |          8 |          0 |          5 |         13 |
+| d:\projects\draughtsmanship\src\buttonHandler.ts     | TypeScript         |         17 |          0 |          7 |         24 |
+| d:\projects\draughtsmanship\src\canvas-init.ts       | TypeScript         |         13 |          0 |          6 |         19 |
+| d:\projects\draughtsmanship\src\canvas-state.ts      | TypeScript         |         10 |          0 |          3 |         13 |
+| d:\projects\draughtsmanship\src\canvasEvenHandler.ts | TypeScript         |         48 |          0 |         14 |         62 |
+| d:\projects\draughtsmanship\src\draw-state.ts        | TypeScript         |         48 |          0 |          9 |         57 |
+| d:\projects\draughtsmanship\src\draw.ts              | TypeScript         |         47 |          4 |         19 |         70 |
+| d:\projects\draughtsmanship\src\drawCircle.ts        | TypeScript         |         17 |          0 |         14 |         31 |
+| d:\projects\draughtsmanship\src\drawLine.ts          | TypeScript         |         17 |          0 |         10 |         27 |
+| d:\projects\draughtsmanship\src\drawRect.ts          | TypeScript         |         16 |          0 |          9 |         25 |
+| d:\projects\draughtsmanship\src\index.html           | HTML               |         20 |          0 |          0 |         20 |
+| d:\projects\draughtsmanship\src\index.ts             | TypeScript         |          5 |          0 |          2 |          7 |
+| d:\projects\draughtsmanship\src\styles.css           | CSS                |         46 |          0 |          9 |         55 |
+| d:\projects\draughtsmanship\src\throttle.ts          | TypeScript         |         22 |          0 |          7 |         29 |
+| d:\projects\draughtsmanship\tsconfig.json            | JSON with Comments |         10 |          0 |          0 |         10 |
+| d:\projects\draughtsmanship\webpack.config.cjs       | JavaScript         |         35 |          0 |          1 |         36 |
+| Total                                                |                    |      4,827 |          4 |        117 |      4,948 |
++------------------------------------------------------+--------------------+------------+------------+------------+------------+

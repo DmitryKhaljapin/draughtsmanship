@@ -6,15 +6,27 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     <body>
-        <div class="content">
-            <section class="tool-bar">
-                <button data-shape="line">line</button>
-                <button data-shape="rect">rect</button>
-                <button data-shape="circle">circle</button>
-            </section>
-            <section class="work-place">
-                <canvas id="canvas"></canvas>
-            </section>
+        <div class="wrapper">
+            <div class="content">
+                <section class="tool-bar">
+                    <button data-shape="line">line</button>
+                    <button data-shape="rect">rect</button>
+                    <button data-shape="circle">circle</button>
+                </section>
+                <section class="work-place">
+                    <canvas id="canvas"></canvas>
+                </section>
+            </div>
+            <div class="state-bar">
+                <div class="coords">
+                    <span class="coord_prop">X:</span>
+                    <span class="coord_value x_value"></span>
+                </div>
+                <div class="coords">
+                    <span class="coord_prop">Y:</span>
+                    <span class="coord_value y_value"></span>
+                </div>
+            </div>
         </div>
     </body>
 </html>

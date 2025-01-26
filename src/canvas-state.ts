@@ -8,6 +8,8 @@ interface DrawObject {
 
 export const drawenObjects: DrawObject[] = [];
 
+export const cursorCoords: Coords = {x: null, y: null};
+
 export const preDrawenObject: {object: DrawObject | null} = {
     object: null
 };

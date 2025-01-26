@@ -22,10 +22,18 @@ html,body{
 	-webkit-text-size-adjust: 100%;
 }
 
-.content {
-    display: flex;
+.wrapper {
+	display: flex;
+	flex-direction: column;
     width: 100%;
     height: 100%;
+
+	overflow: hidden;
+}
+
+.content {
+    display: flex;
+	flex-grow: 1;
     padding: 20px;
 }
 
@@ -52,4 +60,34 @@ button {
 	
 	border: 1px solid black;
 	border-radius: 5px;
+}
+
+.state-bar {
+	display: flex;
+
+	gap: 10px;
+
+	height: 50px;
+
+	padding: 10px 20px;
+}
+
+.coords {
+	display: flex;
+	align-items: center;
+
+	gap: 8px;
+}
+
+.coord_value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	flex-grow: 1;
+
+	width: 100px;
+	height: 100%;
+
+	border: 1px solid #ccc;
 }

@@ -59,11 +59,6 @@ export function reDraw() {
     window.requestAnimationFrame(reDraw);
 }
 
-// export function draw() {
-//     drawObject(drawState.startCoords.x, drawState.startCoords.y, drawState.endCoords.x, drawState.endCoords.y, drawState.shape)
- 
-//     drawState.resetCoords();
-// }
 
 
 

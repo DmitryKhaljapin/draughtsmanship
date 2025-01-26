@@ -1,4 +1,5 @@
 import { drawenObjects, preDrawenObject } from "./canvas-state";
+import { setCoords } from "./cusor";
 import { drawState } from "./draw-state";
 import { throttle } from "./throttle";
 
@@ -37,14 +38,16 @@ export function clickHandler(event: MouseEvent) {
 }
 
 function moveHandler(event: MouseEvent) {
-    if (drawState.endCoords !== null || drawState.startCoords === null) return;
-
     const canvas = event.target as HTMLCanvasElement;
 
     const canvasRect = canvas.getBoundingClientRect();
 
     const x = event.clientX - canvasRect.x;
     const y = event.clientY - canvasRect.y;
+
+    setCoords(x, y);
+
+    if (drawState.endCoords !== null || drawState.startCoords === null) return;
 
     preDrawenObject.object = {
         startCoords: {

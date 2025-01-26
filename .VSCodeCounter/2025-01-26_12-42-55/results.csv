@@ -1,0 +1,20 @@
+"filename", "language", "JSON", "TypeScript", "JSON with Comments", "CSS", "JavaScript", "HTML", "comment", "blank", "total"
+"d:\projects\draughtsmanship\package-lock.json", "JSON", 4422, 0, 0, 0, 0, 0, 0, 1, 4423
+"d:\projects\draughtsmanship\package.json", "JSON", 26, 0, 0, 0, 0, 0, 0, 1, 27
+"d:\projects\draughtsmanship\src\addText.ts", "TypeScript", 0, 8, 0, 0, 0, 0, 0, 5, 13
+"d:\projects\draughtsmanship\src\buttonHandler.ts", "TypeScript", 0, 17, 0, 0, 0, 0, 0, 7, 24
+"d:\projects\draughtsmanship\src\canvas-init.ts", "TypeScript", 0, 13, 0, 0, 0, 0, 0, 6, 19
+"d:\projects\draughtsmanship\src\canvas-state.ts", "TypeScript", 0, 10, 0, 0, 0, 0, 0, 3, 13
+"d:\projects\draughtsmanship\src\canvasEvenHandler.ts", "TypeScript", 0, 48, 0, 0, 0, 0, 0, 14, 62
+"d:\projects\draughtsmanship\src\draw-state.ts", "TypeScript", 0, 48, 0, 0, 0, 0, 0, 9, 57
+"d:\projects\draughtsmanship\src\draw.ts", "TypeScript", 0, 47, 0, 0, 0, 0, 4, 19, 70
+"d:\projects\draughtsmanship\src\drawCircle.ts", "TypeScript", 0, 17, 0, 0, 0, 0, 0, 14, 31
+"d:\projects\draughtsmanship\src\drawLine.ts", "TypeScript", 0, 17, 0, 0, 0, 0, 0, 10, 27
+"d:\projects\draughtsmanship\src\drawRect.ts", "TypeScript", 0, 16, 0, 0, 0, 0, 0, 9, 25
+"d:\projects\draughtsmanship\src\index.html", "HTML", 0, 0, 0, 0, 0, 20, 0, 0, 20
+"d:\projects\draughtsmanship\src\index.ts", "TypeScript", 0, 5, 0, 0, 0, 0, 0, 2, 7
+"d:\projects\draughtsmanship\src\styles.css", "CSS", 0, 0, 0, 46, 0, 0, 0, 9, 55
+"d:\projects\draughtsmanship\src\throttle.ts", "TypeScript", 0, 22, 0, 0, 0, 0, 0, 7, 29
+"d:\projects\draughtsmanship\tsconfig.json", "JSON with Comments", 0, 0, 10, 0, 0, 0, 0, 0, 10
+"d:\projects\draughtsmanship\webpack.config.cjs", "JavaScript", 0, 0, 0, 0, 35, 0, 0, 1, 36
+"Total", "-", 4448, 268, 10, 46, 35, 20, 4, 117, 4948
