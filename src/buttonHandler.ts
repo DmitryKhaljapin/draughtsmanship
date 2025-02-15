@@ -2,6 +2,7 @@ import { preDrawenObject } from "./canvas-state";
 import { Circle } from "./circle/Circle";
 import { Rect } from "./rect/Rect";
 import { Line } from "./line/Line";
+import { Text } from "./text/Text";
 import { ShapeName } from "./Shape";
 
 const buttons = document.querySelectorAll('button')
@@ -29,6 +30,10 @@ buttons.forEach(button => {
             }
             case ShapeName.RECT: {
                 preDrawenObject.object = new Rect();
+                break;
+            }
+            case ShapeName.TEXT: {
+                preDrawenObject.object = new Text();
                 break;
             }
         }

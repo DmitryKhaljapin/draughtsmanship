@@ -3,10 +3,11 @@ export interface Coords {
     y: number;
 }
 
-export enum ShapeName {
+export enum ShapeName { // rename to drawenObjectNames
    LINE = 'line',
    RECT = 'rect',
-   CIRCLE = 'circle'
+   CIRCLE = 'circle',
+   TEXT = 'text'
 };
 
 export function isCoordsArg(arg: number | Coords): arg is Coords {    
@@ -41,7 +42,7 @@ export abstract class Shape {
     abstract draw(): void;
     abstract preDraw(): void;
 
-    abstract setEndCoords(coords: Coords): void;
+    // abstract setEndCoords(coords: Coords): void;
 
     abstract clickHandler(coords: Coords): void;
     abstract moveHandler(coords: Coords): void;

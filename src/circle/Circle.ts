@@ -37,11 +37,6 @@ export class Circle extends Shape {
         context.stroke();
     }
 
-   public getIsRadiusSet() {
-        if (this.radius) return true;
-        return false;
-    }
-
    public setEndCoords({x, y}: Coords) {
        this.radius = Math.sqrt((x - this.xStart)**2 + (y - this.yStart)**2);
     }
@@ -59,13 +54,13 @@ export class Circle extends Shape {
     }
 
    public draw() {
-        this._draw(4)
+        this._draw(4);
     }
 
    public preDraw() {
         if(!this.getIsStartCoordSet()) return;
         
-        this._draw(1) 
+        this._draw(1); 
     }
 
     /*-------------------------------------------------/state's methods/*/
