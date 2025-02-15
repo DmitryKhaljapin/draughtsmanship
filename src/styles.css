@@ -72,14 +72,14 @@ button {
 	padding: 10px 20px;
 }
 
-.coords {
+.prop {
 	display: flex;
 	align-items: center;
 
 	gap: 8px;
 }
 
-.coord_value {
+.value {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -90,4 +90,8 @@ button {
 	height: 100%;
 
 	border: 1px solid #ccc;
+}
+
+input {
+	padding: 5px;
 }

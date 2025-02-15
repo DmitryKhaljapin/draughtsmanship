@@ -1,40 +1,19 @@
-import { drawenObjects, preDrawenObject } from "./canvas-state";
+import { preDrawenObject } from "./canvas-state";
 import { setCoords } from "./cusor";
-import { drawState } from "./draw-state";
 import { throttle } from "./throttle";
 
 export function clickHandler(event: MouseEvent) {
     const canvas = event.target as HTMLCanvasElement;
 
-    if (drawState.shape === null) return;
+    if (preDrawenObject.object === null) return;
 
     const canvasRect = canvas.getBoundingClientRect();
 
     const x = event.clientX - canvasRect.x;
     const y = event.clientY - canvasRect.y;
-
-    if (drawState.startCoords === null) {
-       drawState.setStartCoords(x, y);
-    }
-
-    else {
-        drawState.setEndCoords(x, y);
-
-        drawenObjects.push({
-            startCoords: {
-                x: drawState.startCoords.x,
-                y: drawState.startCoords.y,
-            },
-            endCoords: {
-                x: drawState.endCoords.x,
-                y: drawState.endCoords.y,
-            },
-            shape: drawState.shape
-        });
-
-        preDrawenObject.object = null;
-        drawState.resetCoords();
-    }
+    
+    preDrawenObject.object.clickHandler({x, y});
+  
 }
 
 function moveHandler(event: MouseEvent) {
@@ -47,19 +26,9 @@ function moveHandler(event: MouseEvent) {
 
     setCoords(x, y);
 
-    if (drawState.endCoords !== null || drawState.startCoords === null) return;
+    if (!preDrawenObject.object) return;
 
-    preDrawenObject.object = {
-        startCoords: {
-            x: drawState.startCoords.x,
-            y: drawState.startCoords.y,
-        },
-        endCoords: {
-            x,
-            y,
-        },
-        shape: drawState.shape
-    }
+    preDrawenObject.object.moveHandler({x, y});
 }
 
 export const moveHandlerThrottled = throttle(moveHandler, 17);
