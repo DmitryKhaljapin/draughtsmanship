@@ -1,21 +1,25 @@
-import { canvas } from "../canvas-init";
 import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { angleInput, widthInput } from "../setParams";
-import { Coords, isCoordsArg, Shape, ShapeName } from "../Shape";
-import { CoordsToParams, ParamsToCoords } from "./adapter";
+import { Coords, IAdapterConstructor, isCoordsArg, Shape, ShapeName } from "../Shape";
+import { CoordsToParams } from "./adapter";
 import { Created, LineState } from "./LineState";
 
-export class Line extends Shape {
+interface ILine {
+    width: number,
+    angle: number, // radians
+}
+
+export class Line extends Shape  implements ILine {
     private state: LineState;
 
-    private width: null | number;
-    private angle: null | number;
+    public width: null | number;
+    public angle: null | number; // radians
 
-    constructor() {
-        super();
+    constructor(adapter: IAdapterConstructor) {
+        super(adapter);
 
         this.width = null;
-        this.angle = null; // radians;
+        this.angle = null; // radians
 
         this.name = ShapeName.LINE;
 
@@ -25,22 +29,6 @@ export class Line extends Shape {
     public setState(state: LineState) {
         this.state = state;
         this.state.setContext(this);
-    }
-    
-
-    private _draw(lineWidth: number) {
-        const context = canvas.getContext('2d');
-
-        context.beginPath();
-    
-        context.lineWidth = lineWidth;
-
-        const [xEnd, yEnd] = ParamsToCoords(this.width, this.angle);
-    
-        context.moveTo(this.xStart, this.yStart);
-        context.lineTo(this.xStart + xEnd, this.yStart - yEnd);
-    
-        context.stroke();
     }
 
     public getIsWidthSet() {
@@ -87,7 +75,7 @@ export class Line extends Shape {
         widthInput.value = ''; // FIXME using observer instead;
         angleInput.value = ''; // FIXME using observer instead;
 
-        preDrawenObject.object = new Line();
+        preDrawenObject.object = new Line(this.adapter);
     }
 
     public draw() {

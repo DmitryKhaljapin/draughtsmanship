@@ -1,16 +1,16 @@
 import { canvas } from "../canvas-init";
 import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { textInput } from "../setParams";
-import { Coords, Shape, ShapeName } from "../Shape";
+import { Coords, IAdapterConstructor, Shape, ShapeName } from "../Shape";
 import { Created, TextState } from "./TextState"
 
 export class Text extends Shape {
     private state: TextState
 
-    private content: string
+    public content: string
 
-    constructor() {
-        super();
+    constructor(adapter: IAdapterConstructor) {
+        super(adapter);
 
         this.content = ''
 
@@ -28,34 +28,20 @@ export class Text extends Shape {
         this.content = content;
     }
 
-    private _draw(mode: 'preDraw' | 'draw') {
-        const context = canvas.getContext('2d');
-    
-        const lineHeight = 20;
-        
-        context.fillStyle = `rgba(0, 0, 0, ${mode === 'draw'? 1 : 0.5})`;
-        
-        context.font = `${lineHeight}px Arial`;
-    
-        context.textBaseline = 'top';
-    
-        context.fillText(this.content, this.xStart, this.yStart);
-    }
-
     public build() {
         drawenObjects.push(this);
 
         textInput.value = ''; // FIXME use observer instead;
 
-        preDrawenObject.object = new Text();
+        preDrawenObject.object = new Text(this.adapter);
     }
 
     public draw() {
-        this._draw('draw');
+        this._draw(1);
     }
 
     public preDraw() {
-        this._draw('preDraw');
+        this._draw(0.5);
     }
 
     /*-------------------------------------------------/state's methods/*/

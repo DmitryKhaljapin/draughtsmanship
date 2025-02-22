@@ -1,3 +1,11 @@
+export interface IAdapter {
+    draw: (lineWidth: number) => void
+}
+
+export interface IAdapterConstructor {
+    new(shape: Shape): IAdapter;
+}
+
 export interface Coords {
     x: number;
     y: number;
@@ -15,14 +23,24 @@ export function isCoordsArg(arg: number | Coords): arg is Coords {
 }
 
 export abstract class Shape {
-    protected xStart: null | number;
-    protected yStart: null | number;
+    public xStart: null | number;
+    public yStart: null | number;
 
-    name: ShapeName;
+    public name: ShapeName;
+    
+    protected adapter: IAdapterConstructor; 
 
-    constructor() {
+    constructor(adapter: IAdapterConstructor) {
         this.xStart = null;
         this.yStart = null;
+
+        this.adapter = adapter;
+    }
+    
+    protected _draw(lineWidth: number) {
+        const adapter = new this.adapter(this);
+
+        adapter.draw(lineWidth);
     }
 
     setStartCoords({x, y}: Coords) {

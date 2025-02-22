@@ -1,18 +1,17 @@
 import { canvas } from "../canvas-init";
 import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { radiusInput } from "../setParams";
-import { Coords, Shape, ShapeName } from "../Shape";
+import { Coords, IAdapterConstructor, Shape, ShapeName } from "../Shape";
 import { CircleState, Created } from "./CircleState";
-// TODO: user buider pattern
 
 export class Circle extends Shape {
     private state: CircleState;
 
-    private radius: null | number;
+    public radius: null | number;
 
-    constructor() {
-        super();
-
+    constructor(adapter: IAdapterConstructor) {
+        super(adapter);
+        
         this.radius = null;
         
         this.name = ShapeName.CIRCLE;
@@ -25,23 +24,11 @@ export class Circle extends Shape {
         this.state.setContext(this);
     }
 
-    private _draw(lineWidth: number) {
-        const context = canvas.getContext('2d');
-    
-        context.lineWidth = lineWidth;
-    
-        context.beginPath();
-    
-        context.arc(this.xStart, this.yStart, this.radius, 0, 2 * Math.PI);
-    
-        context.stroke();
-    }
-
-   public setEndCoords({x, y}: Coords) {
+    public setEndCoords({x, y}: Coords) {
        this.radius = Math.sqrt((x - this.xStart)**2 + (y - this.yStart)**2);
     }
 
-   public setRadius(radius: number) {
+    public setRadius(radius: number) {
         this.radius = radius;
     }
 
@@ -50,7 +37,7 @@ export class Circle extends Shape {
 
         radiusInput.value = ''; // FIXME use observer instead;
 
-        preDrawenObject.object = new Circle();
+        preDrawenObject.object = new Circle(this.adapter);
     }
 
    public draw() {
@@ -58,8 +45,6 @@ export class Circle extends Shape {
     }
 
    public preDraw() {
-        if(!this.getIsStartCoordSet()) return;
-        
         this._draw(1); 
     }
 

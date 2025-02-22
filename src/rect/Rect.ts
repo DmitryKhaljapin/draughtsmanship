@@ -1,17 +1,17 @@
 import { canvas } from "../canvas-init";
 import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { heightInput, widthInput } from "../setParams";
-import { Coords, isCoordsArg, Shape, ShapeName } from "../Shape";
+import { Coords, IAdapterConstructor, isCoordsArg, Shape, ShapeName } from "../Shape";
 import { Created, RectState, } from './RectState';
 
 export class Rect extends Shape {
     private state: RectState;
 
-    private width: null | number;
-    private height: null | number;
+    public width: null | number;
+    public height: null | number;
 
-    constructor() {
-        super();
+    constructor(adapter: IAdapterConstructor) {
+        super(adapter);
 
         this.width = null;
         this.height = null;
@@ -24,14 +24,6 @@ export class Rect extends Shape {
     public setState(state: RectState) {
         this.state = state;
         this.state.setContext(this);
-    }
-
-    private _draw(lineWidth: number) {
-        const context = canvas.getContext('2d');
-    
-        context.lineWidth = lineWidth;
-    
-        context.strokeRect(this.xStart, this.yStart, this.width, this.height);
     }
 
     public getIsWidthSet() {
@@ -79,7 +71,7 @@ export class Rect extends Shape {
         widthInput.value = ''; // FIXME using observer instead;
         heightInput.value = ''; // FIXME using observer instead;
 
-        preDrawenObject.object = new Rect();
+        preDrawenObject.object = new Rect(this.adapter);
     }
 
     public draw() {
