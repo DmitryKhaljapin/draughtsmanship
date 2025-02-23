@@ -5,18 +5,25 @@ import { Coords, IAdapterConstructor, Shape, ShapeName } from "../Shape";
 import { Created, TextState } from "./TextState"
 
 export class Text extends Shape {
-    private state: TextState
+    private state: TextState;
 
-    public content: string
+    public content: string; 
+    public lineHeight: number; //unlock
 
     constructor(adapter: IAdapterConstructor) {
         super(adapter);
 
-        this.content = ''
+        this.content = '';
 
-        this.name = ShapeName.TEXT
+        this.name = ShapeName.TEXT;
+
+        this.lineHeight = 20;
 
         this.setState(new Created());
+    }
+
+    public static create(adapter: IAdapterConstructor) {
+        preDrawenObject.object = new Text(adapter);
     }
 
     public setState(state: TextState) {
@@ -33,7 +40,7 @@ export class Text extends Shape {
 
         textInput.value = ''; // FIXME use observer instead;
 
-        preDrawenObject.object = new Text(this.adapter);
+        Text.create(this.adapter);
     }
 
     public draw() {

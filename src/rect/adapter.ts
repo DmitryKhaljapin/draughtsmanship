@@ -1,5 +1,6 @@
 import { canvas } from "../canvas-init";
 import { Coords, IAdapter } from "../Shape";
+import { RectProxy } from "./proxy";
 import { Rect } from "./Rect";
 
 interface ICanvasRect extends IAdapter {
@@ -9,15 +10,17 @@ interface ICanvasRect extends IAdapter {
 }
 
 export class RectCanvasAdapter implements ICanvasRect {
-    startCoord: Coords;
-    width: number;
-    height: number;
+    public startCoord: Coords;
+    public width: number;
+    public height: number;
 
     constructor(rect: Rect) {
-        this.startCoord = {x: rect.xStart, y: rect.yStart};
+        const proxyedRect = new RectProxy(rect);
 
-        this.width = rect.width;
-        this.height = rect.height;
+        this.startCoord = {x: proxyedRect.xStart, y: proxyedRect.yStart};
+
+        this.width = proxyedRect.width;
+        this.height = proxyedRect.height;
     }
 
     draw(lineWidth: number) {

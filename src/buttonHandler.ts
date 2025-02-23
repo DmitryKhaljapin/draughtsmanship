@@ -1,4 +1,4 @@
-import { preDrawenObject } from "./canvas-state";
+import { currentZoom, preDrawenObject } from "./canvas-state";
 import { Circle } from "./circle/Circle";
 import { Rect } from "./rect/Rect";
 import { Line } from "./line/Line";
@@ -10,7 +10,9 @@ import { CircleCanvasAdapter } from "./circle/adapter";
 import { RectCanvasAdapter } from "./rect/adapter";
 import { TextCanvasAdapter } from "./text/adapter";
 
-const buttons = document.querySelectorAll<HTMLButtonElement>('button');
+const buttons = document.querySelectorAll<HTMLButtonElement>('.shap');
+const scaleIncrees = document.querySelector<HTMLButtonElement>('.scale_inc');
+const scaleDecrees = document.querySelector<HTMLButtonElement>('.scale_dec');
 
 buttons.forEach(button => {
     button.addEventListener('click', event => {
@@ -23,22 +25,22 @@ buttons.forEach(button => {
             preDrawenObject.object = null;
             return;
         }
-        
+
         switch (currentButtonShape) {
             case ShapeName.CIRCLE: {
-                preDrawenObject.object = new Circle(CircleCanvasAdapter);
+                Circle.create(CircleCanvasAdapter);
                 break;
             }
             case ShapeName.LINE: {
-                preDrawenObject.object = new Line(LineCanvasAdapter);
+                Line.create(LineCanvasAdapter);
                 break;
             }
             case ShapeName.RECT: {
-                preDrawenObject.object = new Rect(RectCanvasAdapter);
+                Rect.create(RectCanvasAdapter);
                 break;
             }
             case ShapeName.TEXT: {
-                preDrawenObject.object = new Text(TextCanvasAdapter);
+                Text.create(TextCanvasAdapter);
                 break;
             }
         }
@@ -50,19 +52,19 @@ buttons.forEach(button => {
     })
 });
 
-// scaleIncrees.addEventListener('click', () => {
-//     currentZoom.value += 0.1;
-// });
+scaleIncrees.addEventListener('click', () => {
+    currentZoom.value += 0.1;
+});
 
-// scaleDecrees.addEventListener('click', () => {
-//     currentZoom.value -= 0.1;
-// });
+scaleDecrees.addEventListener('click', () => {
+    currentZoom.value -= 0.1;
+});
 
-// canvas.addEventListener('wheel', event => {
-//     if (event.deltaY < 0) {
-//         currentZoom.value += 0.1;
-//     }
-//     else {
-//         currentZoom.value -= 0.1;
-//     }
-// })
+canvas.addEventListener('wheel', event => {
+    if (event.deltaY < 0) {
+        currentZoom.value += 0.1;
+    }
+    else {
+        currentZoom.value -= 0.1;
+    }
+})

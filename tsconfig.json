@@ -6,5 +6,7 @@
         "jsx": "react",
         "esModuleInterop": true,
         "useDefineForClassFields": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
     }
 }

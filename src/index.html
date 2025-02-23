@@ -9,10 +9,10 @@
         <div class="wrapper">
             <div class="content">
                 <section class="tool-bar">
-                    <button data-shape="line">line</button>
-                    <button data-shape="rect">rect</button>
-                    <button data-shape="circle">circle</button>
-                    <button data-shape="text">text</button>
+                    <button class="shap" data-shape="line">line</button>
+                    <button class="shap" data-shape="rect">rect</button>
+                    <button class="shap" data-shape="circle">circle</button>
+                    <button class="shap" data-shape="text">text</button>
                 </section>
                 <section class="work-place">
                     <canvas id="canvas"></canvas>
@@ -46,6 +46,10 @@
                 <div class="prop" >
                     <span clas="text_prop">Text</span>
                     <input class="value t_value" />
+                </div>
+                <div class="prop" >
+                    <button class="scale_inc">+</button>
+                    <button class="scale_dec">-</button>
                 </div>
             </div>
         </div>

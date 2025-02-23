@@ -1,6 +1,7 @@
 import { canvas } from "../canvas-init";
 import { Coords, IAdapter, Shape } from "../Shape";
 import { Line } from "./Line";
+import { LineProxy } from "./proxy";
 
 interface ICanvasLine extends IAdapter {
     startCoords: Coords,
@@ -22,14 +23,16 @@ export function CoordsToParams(start: Coords, end: Coords) {
 }
 
 export class LineCanvasAdapter implements ICanvasLine {
-    startCoords: Coords;
-    endCoords: Coords;
+    public startCoords: Coords;
+    public endCoords: Coords;
 
     constructor(line: Line) {
-        this.startCoords = {x: line.xStart, y: line.yStart}
+        const proxyedLine = new LineProxy(line);
 
-        const xEnd = line.width * Math.cos(line.angle);
-        const yEnd = line.width * Math.sin(line.angle);
+        this.startCoords = {x: proxyedLine.xStart, y: proxyedLine.yStart};
+
+        const xEnd = proxyedLine.width * Math.cos(proxyedLine.angle);
+        const yEnd = proxyedLine.width * Math.sin(proxyedLine.angle);
 
         this.endCoords = {x: xEnd, y: yEnd};
     }

@@ -1,5 +1,6 @@
 import { canvas } from "../canvas-init";
 import { Coords, IAdapter } from "../Shape";
+import { TextProxy } from "./proxy";
 import { Text } from "./Text";
 
 interface ICanvasText extends IAdapter {
@@ -8,22 +9,24 @@ interface ICanvasText extends IAdapter {
 }
 
 export class TextCanvasAdapter implements ICanvasText {
-    startCoords: Coords;
-    content: string;
+    public startCoords: Coords;
+    public content: string;
+    public lineHeight: number;
 
     constructor(text: Text) {
-        this.startCoords = {x: text.xStart, y: text.yStart};
-        this.content = text.content;
+        const proxyedText = new TextProxy(text);
+
+        this.startCoords = {x: proxyedText.xStart, y: proxyedText.yStart};
+        this.content = proxyedText.content;
+        this.lineHeight = proxyedText.lineHeight;
     }
 
     draw(lineWidth: number) {
     const context = canvas.getContext('2d');
-
-    const lineHeight = 20;
     
     context.fillStyle = `rgba(0, 0, 0, ${lineWidth})`;
     
-    context.font = `${lineHeight}px Arial`;
+    context.font = `${this.lineHeight}px Arial`;
 
     context.textBaseline = 'top';
 

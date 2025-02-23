@@ -1,6 +1,7 @@
 import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { angleInput, widthInput } from "../setParams";
 import { Coords, IAdapterConstructor, isCoordsArg, Shape, ShapeName } from "../Shape";
+import { coordsDecorator } from "../utils/coordsDecorator";
 import { CoordsToParams } from "./adapter";
 import { Created, LineState } from "./LineState";
 
@@ -26,6 +27,10 @@ export class Line extends Shape  implements ILine {
         this.setState(new Created());
     }
 
+    public static create(adapter: IAdapterConstructor) {
+        preDrawenObject.object = new Line(adapter)
+    }
+
     public setState(state: LineState) {
         this.state = state;
         this.state.setContext(this);
@@ -43,6 +48,7 @@ export class Line extends Shape  implements ILine {
         return false;
     }
 
+    @coordsDecorator
     public setEndCoords(coords: Coords): void {
         [this.width, this.angle] = CoordsToParams({x: this.xStart, y: this.yStart}, coords);
     }
@@ -75,7 +81,7 @@ export class Line extends Shape  implements ILine {
         widthInput.value = ''; // FIXME using observer instead;
         angleInput.value = ''; // FIXME using observer instead;
 
-        preDrawenObject.object = new Line(this.adapter);
+        Line.create(this.adapter);
     }
 
     public draw() {

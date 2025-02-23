@@ -1,5 +1,6 @@
 import { canvas } from "../canvas-init";
 import { Coords, IAdapter } from "../Shape";
+import { CircleProxy } from "./proxy";
 import { Circle } from "./Circle";
 
 
@@ -9,12 +10,14 @@ interface ICanvasAdapter extends IAdapter {
 }
 
 export class CircleCanvasAdapter implements ICanvasAdapter {
-    startCoords: Coords;
-    radius: number;
+    public startCoords: Coords;
+    public radius: number;
 
     constructor(circle: Circle) {
-        this.startCoords = {x: circle.xStart, y: circle.yStart};
-        this.radius = circle.radius;
+        const proxyedCircle = new CircleProxy(circle);
+
+        this.startCoords = {x: proxyedCircle.xStart, y: proxyedCircle.yStart};
+        this.radius = proxyedCircle.radius;
     }
 
     draw(lineWidth: number) {
