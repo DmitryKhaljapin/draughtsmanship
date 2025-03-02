@@ -1,5 +1,5 @@
 import { drawenObjects } from "./canvas-state";
-import { clickHandler, moveHandlerThrottled } from "./canvasEvenHandler";
+import { clickHandler, mouseDownHandler, mouseUpHandler, moveHandlerThrottled } from "./canvasEvenHandler";
 import { reDraw } from "./draw";
 import { Grid } from "./grid/Grid";
 
@@ -15,7 +15,9 @@ export function init() {
 
     canvas.addEventListener('click', clickHandler);
 
+    canvas.addEventListener('mousedown', mouseDownHandler);
     canvas.addEventListener('mousemove', moveHandlerThrottled);
+    canvas.addEventListener('mouseup', mouseUpHandler);
 
     const grid = new Grid(10, 10, 700, 500);
 

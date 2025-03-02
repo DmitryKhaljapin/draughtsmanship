@@ -12,3 +12,11 @@ export const preDrawenObject: {object: Shape | null} = {
 export const currentZoom = {
     value: 1,
 };
+
+export const drag = {
+    draggingMode: false,
+    isDragging: false,
+    startCoords: {x: 0, y: 0},
+    prevOffset: {x: 0, y: 0},
+    currentOffset: {x: 0, y: 0},
+}

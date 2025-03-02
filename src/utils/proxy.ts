@@ -1,4 +1,4 @@
-import { currentZoom } from "../canvas-state";
+import { currentZoom, drag } from "../canvas-state";
 import { Shape } from "../Shape";
 
 export class ShapeProxy {
@@ -6,7 +6,7 @@ export class ShapeProxy {
     public yStart: number;
 
     constructor(shape: Shape) {
-        this.xStart = shape.xStart * currentZoom.value;
-        this.yStart = shape.yStart * currentZoom.value;
+        this.xStart = shape.xStart * currentZoom.value - drag.currentOffset.x;
+        this.yStart = shape.yStart * currentZoom.value - drag.currentOffset.y;
     }
 }

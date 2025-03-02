@@ -1,4 +1,4 @@
-import { currentZoom, preDrawenObject } from "./canvas-state";
+import { currentZoom, drag, preDrawenObject } from "./canvas-state";
 import { Circle } from "./circle/Circle";
 import { Rect } from "./rect/Rect";
 import { Line } from "./line/Line";
@@ -13,6 +13,9 @@ import { TextCanvasAdapter } from "./text/adapter";
 const buttons = document.querySelectorAll<HTMLButtonElement>('.shap');
 const scaleIncrees = document.querySelector<HTMLButtonElement>('.scale_inc');
 const scaleDecrees = document.querySelector<HTMLButtonElement>('.scale_dec');
+const dragButton = document.querySelector<HTMLButtonElement>('.drag');
+
+const workPlace = document.querySelector('.work-place');
 
 buttons.forEach(button => {
     button.addEventListener('click', event => {
@@ -67,4 +70,13 @@ canvas.addEventListener('wheel', event => {
     else {
         currentZoom.value -= 0.1;
     }
+})
+
+dragButton.addEventListener('click', () => {
+    workPlace.classList.toggle('dragging');
+
+    drag.draggingMode = !drag.draggingMode;
+
+    if (drag.draggingMode) dragButton.style.outline = '2px solid red'
+    else dragButton.style.outline = 'none'
 })

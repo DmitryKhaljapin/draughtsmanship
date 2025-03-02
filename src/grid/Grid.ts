@@ -1,5 +1,5 @@
 import { canvas } from "../canvas-init";
-import { currentZoom } from "../canvas-state";
+import { currentZoom, drag } from "../canvas-state";
 
 export class Grid {
 
@@ -15,8 +15,8 @@ export class Grid {
     
         context.lineWidth = 1;
 
-        const xStart =  this.xStart * currentZoom.value;
-        const yStart = this.yStart * currentZoom.value;
+        const xStart = this.xStart * currentZoom.value - drag.currentOffset.x;
+        const yStart = this.yStart * currentZoom.value - drag.currentOffset.y;
         const height = this.height * currentZoom.value;
 
         for (let step = 0; step <= this.width; step += 50) {
@@ -36,8 +36,8 @@ export class Grid {
     
         context.lineWidth = 1;
         
-        const xStart =  this.xStart * currentZoom.value;
-        const yStart = this.yStart * currentZoom.value;
+        const xStart =  this.xStart * currentZoom.value - drag.currentOffset.x;
+        const yStart = this.yStart * currentZoom.value - drag.currentOffset.y;
         const width = this.width * currentZoom.value;
 
         for (let step = 0; step <= this.height; step += 50) {
