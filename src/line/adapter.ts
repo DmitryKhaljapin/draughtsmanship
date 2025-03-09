@@ -1,5 +1,5 @@
 import { canvas } from "../canvas-init";
-import { Coords, IAdapter, Shape } from "../Shape";
+import { Coords, IAdapter } from "../Shape";
 import { Line } from "./Line";
 import { LineProxy } from "./proxy";
 

@@ -1,6 +1,6 @@
-import { currentZoom } from "../canvas-state";
 import { ShapeProxy } from "../utils/proxy";
 import { Line } from "./Line";
+import { app } from "../canvas-init";
 
 export class LineProxy extends ShapeProxy {
     public width: number;
@@ -9,7 +9,7 @@ export class LineProxy extends ShapeProxy {
     constructor(line: Line) {
         super(line);
 
-        this.width = line.width * currentZoom.value;
+        this.width = line.width * app.currentZoomLevel;
         this.angle = line.angle;
     }
 }

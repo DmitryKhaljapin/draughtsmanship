@@ -1,5 +1,5 @@
 import { canvas } from "../canvas-init";
-import { currentZoom, drag } from "../canvas-state";
+import { app } from "../canvas-init";
 
 export class Grid {
 
@@ -15,12 +15,12 @@ export class Grid {
     
         context.lineWidth = 1;
 
-        const xStart = this.xStart * currentZoom.value - drag.currentOffset.x;
-        const yStart = this.yStart * currentZoom.value - drag.currentOffset.y;
-        const height = this.height * currentZoom.value;
+        const xStart = this.xStart * app.currentZoomLevel - app.dragPosition.currentOffset.x;
+        const yStart = this.yStart * app.currentZoomLevel - app.dragPosition.currentOffset.y;
+        const height = this.height * app.currentZoomLevel;
 
         for (let step = 0; step <= this.width; step += 50) {
-            const currentStep = step * currentZoom.value;
+            const currentStep = step * app.currentZoomLevel;
 
             context.moveTo(xStart + currentStep, yStart);
             context.lineTo(xStart + currentStep, yStart + height);
@@ -36,12 +36,12 @@ export class Grid {
     
         context.lineWidth = 1;
         
-        const xStart =  this.xStart * currentZoom.value - drag.currentOffset.x;
-        const yStart = this.yStart * currentZoom.value - drag.currentOffset.y;
-        const width = this.width * currentZoom.value;
+        const xStart =  this.xStart * app.currentZoomLevel - app.dragPosition.currentOffset.x;
+        const yStart = this.yStart * app.currentZoomLevel - app.dragPosition.currentOffset.y;
+        const width = this.width * app.currentZoomLevel;
 
         for (let step = 0; step <= this.height; step += 50) {
-            const currentStep = step * currentZoom.value;
+            const currentStep = step * app.currentZoomLevel;
             
             context.moveTo(xStart, yStart + currentStep);
             context.lineTo(xStart + width, yStart + currentStep);

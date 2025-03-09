@@ -1,6 +1,6 @@
-import { currentZoom } from "../canvas-state";
 import { ShapeProxy } from "../utils/proxy";
 import { Text } from "./Text";
+import { app } from "../canvas-init";
 
 export class TextProxy extends ShapeProxy {
     public content: string;
@@ -10,6 +10,6 @@ export class TextProxy extends ShapeProxy {
         super(text);
 
         this.content = text.content;
-        this.lineHeight = text.lineHeight * currentZoom.value;
+        this.lineHeight = text.lineHeight * app.currentZoomLevel;
     }
 }

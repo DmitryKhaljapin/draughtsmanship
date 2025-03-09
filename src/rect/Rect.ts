@@ -1,9 +1,7 @@
-import { canvas } from "../canvas-init";
-import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { heightInput, widthInput } from "../setParams";
 import { Coords, IAdapterConstructor, isCoordsArg, Shape, ShapeName } from "../Shape";
-import { coordsDecorator } from "../utils/coordsDecorator";
 import { Created, RectState, } from './RectState';
+import { app } from "../canvas-init";
 
 export class Rect extends Shape {
     private state: RectState;
@@ -23,7 +21,7 @@ export class Rect extends Shape {
     }
 
     public static create(adapter: IAdapterConstructor) {
-        preDrawenObject.object = new Rect(adapter)
+        app.preDrawenObject = new Rect(adapter)
     }
 
     public setState(state: RectState) {
@@ -43,7 +41,6 @@ export class Rect extends Shape {
         return false;
     }
 
-    @coordsDecorator
     public setEndCoords({x, y}: Coords) {
         this.width = x - this.xStart;
         this.height = y - this.yStart;
@@ -72,7 +69,7 @@ export class Rect extends Shape {
     }
 
     public build() {
-        drawenObjects.push(this);
+        app.drawenObjects.push(this);
 
         widthInput.value = ''; // FIXME using observer instead;
         heightInput.value = ''; // FIXME using observer instead;

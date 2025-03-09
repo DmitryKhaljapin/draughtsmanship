@@ -1,8 +1,7 @@
-import { canvas } from "../canvas-init";
-import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { textInput } from "../setParams";
 import { Coords, IAdapterConstructor, Shape, ShapeName } from "../Shape";
 import { Created, TextState } from "./TextState"
+import { app } from "../canvas-init";
 
 export class Text extends Shape {
     private state: TextState;
@@ -23,7 +22,7 @@ export class Text extends Shape {
     }
 
     public static create(adapter: IAdapterConstructor) {
-        preDrawenObject.object = new Text(adapter);
+        app.preDrawenObject = new Text(adapter);
     }
 
     public setState(state: TextState) {
@@ -36,7 +35,7 @@ export class Text extends Shape {
     }
 
     public build() {
-        drawenObjects.push(this);
+        app.drawenObjects.push(this);
 
         textInput.value = ''; // FIXME use observer instead;
 

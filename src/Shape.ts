@@ -1,5 +1,3 @@
-import { coordsDecorator } from "./utils/coordsDecorator";
-
 export interface IAdapter {
     draw: (lineWidth: number) => void
 }
@@ -45,7 +43,6 @@ export abstract class Shape {
         adapter.draw(lineWidth);
     }
 
-    @coordsDecorator
     setStartCoords({x, y}: Coords) {
         this.xStart = x;
         this.yStart = y;

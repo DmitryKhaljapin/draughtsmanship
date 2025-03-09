@@ -1,6 +1,6 @@
-import { currentZoom } from "../canvas-state";
 import { ShapeProxy } from "../utils/proxy";
 import { Circle } from "./Circle";
+import { app } from "../canvas-init";
 
 export class CircleProxy extends ShapeProxy {
     public radius: number;
@@ -8,6 +8,6 @@ export class CircleProxy extends ShapeProxy {
     constructor(circle: Circle) {
         super(circle);
 
-        this.radius = circle.radius * currentZoom.value;
+        this.radius = circle.radius * app.currentZoomLevel;
     }
 }

@@ -1,8 +1,7 @@
-import { drawenObjects, preDrawenObject } from "../canvas-state";
 import { radiusInput } from "../setParams";
 import { Coords, IAdapterConstructor, Shape, ShapeName } from "../Shape";
-import { coordsDecorator} from "../utils/coordsDecorator";
 import { CircleState, Created } from "./CircleState";
+import { app } from "../canvas-init";
 
 export class Circle extends Shape {
     private state: CircleState;
@@ -20,7 +19,7 @@ export class Circle extends Shape {
     }
 
     public static create(adapter: IAdapterConstructor) {
-        preDrawenObject.object = new Circle(adapter);
+        app.preDrawenObject = new Circle(adapter);
     }
 
     public setState(state: CircleState) {
@@ -28,7 +27,6 @@ export class Circle extends Shape {
         this.state.setContext(this);
     }
     
-    @coordsDecorator
     public setEndCoords({x, y}: Coords) {
        this.radius = Math.sqrt((x - this.xStart)**2 + (y - this.yStart)**2);
     }
@@ -38,7 +36,7 @@ export class Circle extends Shape {
     }
 
     public build() {
-        drawenObjects.push(this);
+        app.drawenObjects.push(this);
 
         radiusInput.value = ''; // FIXME use observer instead;
 

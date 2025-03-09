@@ -1,4 +1,3 @@
-import { currentZoom, drag, preDrawenObject } from "./canvas-state";
 import { Circle } from "./circle/Circle";
 import { Rect } from "./rect/Rect";
 import { Line } from "./line/Line";
@@ -9,6 +8,8 @@ import { LineCanvasAdapter } from "./line/adapter";
 import { CircleCanvasAdapter } from "./circle/adapter";
 import { RectCanvasAdapter } from "./rect/adapter";
 import { TextCanvasAdapter } from "./text/adapter";
+import { app } from "./canvas-init";
+import { AppStateNames, Dragging, Drawing, InitialState } from "./AppState";
 
 const buttons = document.querySelectorAll<HTMLButtonElement>('.shap');
 const scaleIncrees = document.querySelector<HTMLButtonElement>('.scale_inc');
@@ -24,8 +25,10 @@ buttons.forEach(button => {
 
         buttons.forEach(button => button.style.outline = null);
 
-        if (currentButtonShape === preDrawenObject.object?.name) {
-            preDrawenObject.object = null;
+        if (currentButtonShape === app.preDrawenObject?.name) {
+            app.preDrawenObject = null;
+            app.setState(new InitialState())
+
             return;
         }
 
@@ -48,7 +51,9 @@ buttons.forEach(button => {
             }
         }
 
-        if (currentButtonShape === preDrawenObject.object.name) {
+        app.setState(new Drawing())
+
+        if (currentButtonShape === app.preDrawenObject.name) {
 
             button.style.outline = '2px solid red'
         }
@@ -56,27 +61,33 @@ buttons.forEach(button => {
 });
 
 scaleIncrees.addEventListener('click', () => {
-    currentZoom.value += 0.1;
+    app.currentZoomLevel += 0.1;
 });
 
 scaleDecrees.addEventListener('click', () => {
-    currentZoom.value -= 0.1;
+    app.currentZoomLevel -= 0.1;
 });
 
 canvas.addEventListener('wheel', event => {
     if (event.deltaY < 0) {
-        currentZoom.value += 0.1;
+        app.currentZoomLevel += 0.1;
     }
     else {
-        currentZoom.value -= 0.1;
+        app.currentZoomLevel -= 0.1;
     }
 })
 
 dragButton.addEventListener('click', () => {
-    workPlace.classList.toggle('dragging');
+    if (app.state.name === AppStateNames.Dragging) {
+        dragButton.style.outline = 'none';
+        workPlace.classList.remove('dragging');
 
-    drag.draggingMode = !drag.draggingMode;
+        app.setState(new InitialState());
+    } 
+    else {
+        dragButton.style.outline = '2px solid red'
+        workPlace.classList.add('dragging');
 
-    if (drag.draggingMode) dragButton.style.outline = '2px solid red'
-    else dragButton.style.outline = 'none'
+        app.setState(new Dragging())
+    } 
 })

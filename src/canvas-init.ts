@@ -1,10 +1,12 @@
-import { drawenObjects } from "./canvas-state";
+import { App } from "./App";
 import { clickHandler, mouseDownHandler, mouseUpHandler, moveHandlerThrottled } from "./canvasEvenHandler";
 import { reDraw } from "./draw";
 import { Grid } from "./grid/Grid";
 
 const workPlace = document.querySelector('.work-place');
 export const canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
+
+export let app: App;
 
 export function init() {
     const width = parseInt(getComputedStyle(workPlace).width);
@@ -19,9 +21,11 @@ export function init() {
     canvas.addEventListener('mousemove', moveHandlerThrottled);
     canvas.addEventListener('mouseup', mouseUpHandler);
 
+    app = new App();
+
     const grid = new Grid(10, 10, 700, 500);
 
-    drawenObjects.push(grid);
+    app.drawenObjects.push(grid);
 
     window.requestAnimationFrame(reDraw);
 }

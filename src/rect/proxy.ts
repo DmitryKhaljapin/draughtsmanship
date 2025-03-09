@@ -1,6 +1,6 @@
-import { currentZoom } from "../canvas-state";
 import { ShapeProxy } from "../utils/proxy"
 import { Rect } from "./Rect";
+import { app } from "../canvas-init";
 
 export class RectProxy extends ShapeProxy {
     public width: number;
@@ -9,7 +9,7 @@ export class RectProxy extends ShapeProxy {
     constructor(rect: Rect) {
         super(rect);
 
-        this.width = rect.width * currentZoom.value;
-        this.height = rect.height * currentZoom.value;
+        this.width = rect.width * app.currentZoomLevel;
+        this.height = rect.height * app.currentZoomLevel;
     }
 }
